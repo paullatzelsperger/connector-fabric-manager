@@ -11,11 +11,12 @@ concurrency:
 
 jobs:
   docker-publish:
+    name: Build ${{ matrix.image.name }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    
+
     strategy:
       matrix:
         image:
