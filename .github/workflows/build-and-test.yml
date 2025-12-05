@@ -10,17 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
+      - name: "Checkout code"
         uses: actions/checkout@v4
       
-      - name: Set up Go
+      - name: "Set up Go"
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
           cache: true
 
-      - name: Generate Mocks
+      - name: "Create Workspace"
+        run: go work init ./assembly ./common ./pmanager ./tmanager ./e2e ./mvd ./agent/edcv ./agent/keycloak
+
+      - name: "Generate Mocks"
         run: make generate-mocks
 
-      - name: Run tests
+      - name: "Run tests"
         run: make test
