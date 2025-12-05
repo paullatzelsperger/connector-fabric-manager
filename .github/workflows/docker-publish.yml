@@ -58,7 +58,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/cfm/${{ matrix.image.name }}
+          images: ghcr.io/${{github.repository}}/${{ matrix.image.name }}
           tags: |
             type=ref,event=branch
             type=sha,prefix={{branch}}-
